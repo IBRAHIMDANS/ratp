@@ -16,7 +16,7 @@ export const CustomNumberTextField = ({
     onChange={onChange}
     InputProps={{
       inputProps: {
-        min, max, shrink: true,
+        min, max, shrink: "true",
       },
     }}
   />

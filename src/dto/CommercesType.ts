@@ -1,6 +1,6 @@
 type AlignType = "inherit" | "right" | "left" | "center"
 
-export interface TableHeaderType {
+export type CommercesType = {
   label: string,
   align?: AlignType
   data: string

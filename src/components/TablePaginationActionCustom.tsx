@@ -5,6 +5,7 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import React from "react";
 import { CustomNumberTextField } from "./CustomNumberTextField";
+import { TablePaginationActionsCustomType } from "../dto/TablePaginationActionsCustomType";
 
 
 export function TablePaginationActionsCustom({
@@ -16,7 +17,7 @@ export function TablePaginationActionsCustom({
   apiRow,
   onChangeApiRow,
   onChangeApiPage,
-}) {
+}: TablePaginationActionsCustomType) {
   const theme = useTheme();
 
   const handleFirstPageButtonClick = (event) => onPageChange(event, 0);

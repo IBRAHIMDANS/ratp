@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 
-export interface CustomNumberTextFieldType {
+export type CustomNumberTextFieldType = {
   label: string,
   value: number
   min?: number,
