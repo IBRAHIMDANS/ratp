@@ -6,9 +6,13 @@ Pour lancer le projet il faut d'abord faire
 
 Ce qui nous créera le fichier .env
 
-Puis pour le demarrer
+#### Puis pour le demarrer
 
 ### `yarn start`
+
+#### Pour build le projet
+
+### `yarn build `
 
 # SCREENSHOT
 
