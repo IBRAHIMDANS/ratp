@@ -29,22 +29,22 @@ const tableHeader: TableHeaderType[] = [
   {
     label: "Libellé",
     align: "inherit",
-    data: row => row?.fields?.tco_libelle,
+    data:  "fields?.tco_libelle",
   },
   {
     label: "Adresse",
     align: "right",
-    data: row => row?.fields?.dea_numero_rue_livraison_dea_rue_livraison,
+    data:  "fields?.dea_numero_rue_livraison_dea_rue_livraison",
   },
   {
     label: "Ville",
     align: "right",
-    data: row => row?.fields?.ville,
+    data:  "fields?.ville",
   },
   {
     label: "Code postal",
     align: "right",
-    data: row => row?.fields?.code_postal,
+    data:  "fields?.code_postal",
   },
 ];
 
@@ -104,13 +104,17 @@ const RatpTable = () => {
                   : data
               )?.map((row, key) => (
                 <TableRow key={row?.fields?.recordid}>
-                  <TableCell
-                    component="th"
-                    scope="row"
-                  >{row?.fields?.tco_libelle}</TableCell>
-                  <TableCell align="right">{row?.fields?.dea_numero_rue_livraison_dea_rue_livraison}</TableCell>
-                  <TableCell align="right">{row?.fields?.ville}</TableCell>
-                  <TableCell align="right">{row?.fields?.code_postal}</TableCell>
+                  {/*<TableCell*/}
+                  {/*  component="th"*/}
+                  {/*  scope="row"*/}
+                  {/*>{row?.fields?.tco_libelle}</TableCell>*/}
+                  {tableHeader?.map(item => {
+
+
+                    console.log(tableHeader, "tableHeader")
+                    console.log(row, "row")
+                    return <TableCell align={item?.align}>{row[`${item.data}`]}</TableCell>;
+                  })}
                 </TableRow>
               ))}
             </TableBody>
