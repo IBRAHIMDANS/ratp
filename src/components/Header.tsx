@@ -23,18 +23,16 @@ export function HideOnScroll(props) {
 const StyledHeader = styled(AppBar)`
   flex-grow: 1;
 `;
-const Header = (props) => {
+export const Header = (props) => {
   return (
     <HideOnScroll {...props}>
       <StyledHeader>
         <Toolbar variant="dense">
           <Typography variant="h6">
-            RATP LISTE DES COMMERCE
+            RATP LISTE DES COMMERCES
           </Typography>
         </Toolbar>
       </StyledHeader>
     </HideOnScroll>
   );
 };
-
-export default Header;

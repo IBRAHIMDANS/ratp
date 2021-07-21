@@ -1,4 +1,7 @@
-export { default as Header } from "./Header";
-export { default as Footer } from "./Footer";
-export { default as RatpTable } from "./RatpTable";
-export { default as SearchBar } from "./SearchBar";
+export { Header } from "./Header";
+export { Footer } from "./Footer";
+export { RatpTable } from "./RatpTable";
+export { RatpTableBody } from "./RatpTableBody";
+export { RatpTableFooter } from "./RatpTableFooter";
+export { SearchBar } from "./SearchBar";
+export { TablePaginationActionsCustom } from "./TablePaginationActionsCustom";

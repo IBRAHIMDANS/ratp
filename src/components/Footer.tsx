@@ -12,7 +12,7 @@ const StyledFooter = styled(BottomNavigation)`
   }
 `;
 
-const Footer = () => {
+export const Footer = () => {
   return (
     <StyledFooter showLabels>
       <BottomNavigationAction
@@ -23,4 +23,3 @@ const Footer = () => {
     </StyledFooter>
   );
 };
-export default Footer;

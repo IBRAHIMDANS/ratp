@@ -5,10 +5,10 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import React from "react";
 import { CustomNumberTextField } from "./CustomNumberTextField";
-import { TablePaginationActionsCustomType } from "../dto/TablePaginationActionsCustomType";
+import { TablePaginationActionsCustomType } from "../dto";
 
 
-export function TablePaginationActionsCustom({
+export const TablePaginationActionsCustom = ({
   count,
   page,
   rowsPerPage,
@@ -17,7 +17,7 @@ export function TablePaginationActionsCustom({
   apiRow,
   onChangeApiRow,
   onChangeApiPage,
-}: TablePaginationActionsCustomType) {
+}: TablePaginationActionsCustomType) => {
   const theme = useTheme();
 
   const handleFirstPageButtonClick = (event) => onPageChange(event, 0);

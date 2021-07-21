@@ -1,10 +1,9 @@
 import InputBase from "@material-ui/core/InputBase";
 import React from "react";
-import { SearchBarType } from "../dto/SearchBarType";
+import { SearchBarType } from "../dto";
 
 
-
-const SearchBar = ({ value, onChange }: SearchBarType) => {
+export const SearchBar = ({ value, onChange }: SearchBarType) => {
   return <InputBase
     placeholder="Search"
     type={"search"}
@@ -13,4 +12,3 @@ const SearchBar = ({ value, onChange }: SearchBarType) => {
     inputProps={{ "aria-label": "search" }}
   />;
 };
-export default SearchBar;

@@ -1,24 +1,24 @@
 import React, { PropsWithChildren, useEffect, useState } from "react";
 import { getAll } from "../services/RatpServices";
 import { useQuery } from "react-query";
-import { SearchBar } from "./index";
 import {
-  CircularProgress,
+  RatpTableBody,
+  RatpTableFooter,
+  SearchBar,
+  TablePaginationActionsCustom,
+} from "./index";
+import {
   Grid,
   Paper,
   Table,
-  TableBody,
   TableCell,
   TableContainer,
-  TableFooter,
   TableHead,
-  TablePagination,
   TablePaginationProps,
   TableRow,
 } from "@material-ui/core";
 import styled from "styled-components";
-import { CommercesType } from "../dto/CommercesType";
-import { TablePaginationActionsCustom } from "./TablePaginationActionCustom";
+import { CommercesType } from "../dto";
 
 const Root = styled.div`
   padding: 2em;
@@ -48,7 +48,7 @@ const CommercesArray: CommercesType[] = [
   },
 ];
 
-const RatpTable = () => {
+export const RatpTable = () => {
   const [search, setSearch] = useState<string>("");
   const [page, setPage] = useState<number>(0);
   const [rowsPerPage, setRowsPerPage] = useState<number>(5);
@@ -89,65 +89,51 @@ const RatpTable = () => {
           <Table aria-label="simple table">
             <TableHead>
               <TableRow>
-                {CommercesArray?.map(item =>
-                  <TableCell
-                    key={item.data}
-                    align={item?.align}
-                  >{item?.label}</TableCell>)}
+                {
+                  CommercesArray?.map(item =>
+                    <TableCell key={item.data} align={item?.align}>
+                      {item?.label}
+                    </TableCell>,
+                  )
+                }
               </TableRow>
             </TableHead>
-            <TableBody>
-              {isLoading &&
-              <Grid container alignItems={"center"}>
-                <CircularProgress/>
-              </Grid>
-              }
-              {commerces?.length === 0 &&
-              <Paper> Pas de données 🤧 </Paper>}
-              {(
-                rowsPerPage > 0 ?
-                  commerces?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) :
-                  commerces
-              )?.map((commerce) => (
-                <TableRow key={commerce?.fields?.recordid}>
-                  {CommercesArray?.map(item => <TableCell
-                    key={item.data}
-                    align={item?.align}
-                  >{commerce.fields[`${item.data}`]}</TableCell>)}
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
-        <TableFooter>
-          <TableRow>
-            <TablePagination
-              rowsPerPageOptions={[5, 10, 25, 50, { value: -1, label: "All" }]}
-              component="div"
-              count={commerces?.length}
+            <RatpTableBody
+              loading={isLoading}
+              commerces={commerces}
               rowsPerPage={rowsPerPage}
               page={page}
-              colSpan={3}
-              onPageChange={handleChangePage}
-              onRowsPerPageChange={handleChangeRowsPerPage}
-              SelectProps={{
-                inputProps: { "aria-label": "nombre d'element par page" },
-                native: true,
-              }}
-              ActionsComponent={(defaultProps: PropsWithChildren<TablePaginationProps>) =>
-                <TablePaginationActionsCustom
-                  {...defaultProps}
-                  apiPage={apiPage}
-                  apiRow={apiRow}
-                  onChangeApiPage={(e) => setApiPage(e)}
-                  onChangeApiRow={(e) => setApiRow(e)}
-                />}
+              element={(commerce) => (
+                <TableRow key={commerce?.fields?.recordid}>
+                  {
+                    CommercesArray?.map(item =>
+                      <TableCell key={item.data} align={item?.align}>
+                        {commerce.fields[`${item.data}`]}
+                      </TableCell>,
+                    )
+                  }
+                </TableRow>
+              )}
             />
-          </TableRow>
-        </TableFooter>
+          </Table>
+        </TableContainer>
+        <RatpTableFooter
+          commerces={commerces}
+          rowsPerPage={rowsPerPage}
+          page={page}
+          onPageChange={handleChangePage}
+          onRowsPerPageChange={handleChangeRowsPerPage}
+          actionsComponent={(defaultProps: PropsWithChildren<TablePaginationProps>) =>
+            <TablePaginationActionsCustom
+              {...defaultProps}
+              apiPage={apiPage}
+              apiRow={apiRow}
+              onChangeApiPage={(e) => setApiPage(e)}
+              onChangeApiRow={(e) => setApiRow(e)}
+            />}
+        />
       </Grid>
     </Root>
   );
 };
 
-export default RatpTable;
