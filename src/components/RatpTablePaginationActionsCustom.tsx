@@ -12,7 +12,6 @@ const Root = styled(Box)`
   display: flex;
   min-height: 100px;
   align-content: center;
-
 `;
 export const RatpTablePaginationActionsCustom = ({
   count,
@@ -92,8 +91,7 @@ export const RatpTablePaginationActionsCustom = ({
           }
         </Grid>
       </Grid>
-
     </Root>
   );
-}
+};
 

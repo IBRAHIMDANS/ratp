@@ -1,4 +1,11 @@
-import { CircularProgress, Grid, Paper, TableBody } from "@material-ui/core";
+import {
+  CircularProgress,
+  Grid,
+  Paper,
+  TableBody,
+  TableCell,
+  TableRow,
+} from "@material-ui/core";
 import React from "react";
 import { RatpTableBodyType } from "../types";
 
@@ -12,12 +19,21 @@ export const RatpTableBody = ({
 }: RatpTableBodyType) => {
   return <TableBody>
     {loading &&
-    <Grid container alignItems={"center"}>
-      <CircularProgress/>
-    </Grid>
+    <TableRow>
+      <TableCell>
+        <Grid container alignItems={"center"}>
+          <CircularProgress/>
+        </Grid>
+      </TableCell>
+    </TableRow>
     }
-    {commerces?.length === 0 &&
-    <Paper> Pas de données 🤧 </Paper>}
+    {!loading && commerces?.length === 0 &&
+    <TableRow>
+      <TableCell>
+        <Paper> Pas de données 🤧 </Paper>
+      </TableCell>
+    </TableRow>}
+
     {(
       rowsPerPage > 0 ?
         commerces?.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage) :

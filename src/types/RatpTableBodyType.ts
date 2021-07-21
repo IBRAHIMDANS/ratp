@@ -3,5 +3,5 @@ export type RatpTableBodyType = {
   commerces: any[],
   rowsPerPage: number,
   page: number,
-  element: (commerce) => JSX.Element
+  element: (commerce, key) => JSX.Element
 }

@@ -1,7 +1,13 @@
 import { TableFooter, TablePagination, TableRow } from "@material-ui/core";
 import React from "react";
 import { RatpTableFooterType } from "../types";
+import styled from "styled-components";
 
+const TableFooterCustom = styled(TableFooter)`
+  .MuiTablePagination-spacer {
+    flex: 0
+  }
+`;
 export const RatpTableFooter = ({
   commerces,
   rowsPerPage,
@@ -10,11 +16,10 @@ export const RatpTableFooter = ({
   onRowsPerPageChange,
   actionsComponent,
 }: RatpTableFooterType) => {
-  return <TableFooter>
+  return <TableFooterCustom>
     <TableRow>
       <TablePagination
         rowsPerPageOptions={[5, 10, 25, 50, { value: -1, label: "All" }]}
-        component="div"
         count={commerces?.length}
         rowsPerPage={rowsPerPage}
         page={page}
@@ -28,5 +33,5 @@ export const RatpTableFooter = ({
         ActionsComponent={actionsComponent}
       />
     </TableRow>
-  </TableFooter>;
+  </TableFooterCustom>;
 };

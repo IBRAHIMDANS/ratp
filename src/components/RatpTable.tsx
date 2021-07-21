@@ -103,8 +103,8 @@ export const RatpTable = () => {
               commerces={commerces}
               rowsPerPage={rowsPerPage}
               page={page}
-              element={(commerce) => (
-                <TableRow key={commerce?.fields?.recordid}>
+              element={(commerce, idx) => (
+                <TableRow key={`${commerce?.fields?.recordid}${idx}`}>
                   {
                     CommercesArray?.map(item =>
                       <TableCell key={item.data} align={item?.align}>
@@ -115,23 +115,23 @@ export const RatpTable = () => {
                 </TableRow>
               )}
             />
+            <RatpTableFooter
+              commerces={commerces}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
+              actionsComponent={(defaultProps: PropsWithChildren<TablePaginationProps>) =>
+                <RatpTablePaginationActionsCustom
+                  {...defaultProps}
+                  apiPage={apiPage}
+                  apiRow={apiRow}
+                  onChangeApiPage={(e) => setApiPage(e)}
+                  onChangeApiRow={(e) => setApiRow(e)}
+                />}
+            />
           </Table>
         </TableContainer>
-        <RatpTableFooter
-          commerces={commerces}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-          actionsComponent={(defaultProps: PropsWithChildren<TablePaginationProps>) =>
-            <RatpTablePaginationActionsCustom
-              {...defaultProps}
-              apiPage={apiPage}
-              apiRow={apiRow}
-              onChangeApiPage={(e) => setApiPage(e)}
-              onChangeApiRow={(e) => setApiRow(e)}
-            />}
-        />
       </Grid>
     </Root>
   );
