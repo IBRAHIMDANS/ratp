@@ -5,5 +5,5 @@ export type { RatpTableBodyType } from "./RatpTableBodyType";
 export type { RatpTableFooterType } from "./RatpTableFooterType";
 export type { SearchBarType } from "./SearchBarType";
 export type {
-  TablePaginationActionsCustomType,
-} from "./TablePaginationActionsCustomType";
+  RatpTablePaginationActionsCustomType,
+} from "./RatpTablePaginationActionsCustomType";

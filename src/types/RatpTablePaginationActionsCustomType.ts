@@ -1,4 +1,4 @@
-export type TablePaginationActionsCustomType = {
+export type RatpTablePaginationActionsCustomType = {
   count: number,
   page: number,
   rowsPerPage: number,

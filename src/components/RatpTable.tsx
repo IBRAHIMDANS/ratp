@@ -4,8 +4,8 @@ import { useQuery } from "react-query";
 import {
   RatpTableBody,
   RatpTableFooter,
+  RatpTablePaginationActionsCustom,
   SearchBar,
-  TablePaginationActionsCustom,
 } from "./index";
 import {
   Grid,
@@ -18,7 +18,7 @@ import {
   TableRow,
 } from "@material-ui/core";
 import styled from "styled-components";
-import { CommercesType } from "../dto";
+import { CommercesType } from "../types";
 
 const Root = styled.div`
   padding: 2em;
@@ -124,7 +124,7 @@ export const RatpTable = () => {
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
           actionsComponent={(defaultProps: PropsWithChildren<TablePaginationProps>) =>
-            <TablePaginationActionsCustom
+            <RatpTablePaginationActionsCustom
               {...defaultProps}
               apiPage={apiPage}
               apiRow={apiRow}

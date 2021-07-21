@@ -1,6 +1,6 @@
 import { CircularProgress, Grid, Paper, TableBody } from "@material-ui/core";
 import React from "react";
-import { RatpTableBodyType } from "../dto";
+import { RatpTableBodyType } from "../types";
 
 
 export const RatpTableBody = ({

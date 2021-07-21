@@ -1,6 +1,6 @@
 import InputBase from "@material-ui/core/InputBase";
 import React from "react";
-import { SearchBarType } from "../dto";
+import { SearchBarType } from "../types";
 
 
 export const SearchBar = ({ value, onChange }: SearchBarType) => {

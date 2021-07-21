@@ -1,6 +1,6 @@
 import { Grid, TextField } from "@material-ui/core";
 import React from "react";
-import { CustomNumberTextFieldType } from "../dto";
+import { CustomNumberTextFieldType } from "../types";
 
 export const CustomNumberTextField = ({
   label,

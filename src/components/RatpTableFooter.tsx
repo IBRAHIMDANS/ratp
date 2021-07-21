@@ -1,6 +1,6 @@
 import { TableFooter, TablePagination, TableRow } from "@material-ui/core";
 import React from "react";
-import { RatpTableFooterType } from "../dto";
+import { RatpTableFooterType } from "../types";
 
 export const RatpTableFooter = ({
   commerces,

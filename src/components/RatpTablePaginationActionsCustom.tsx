@@ -5,10 +5,16 @@ import KeyboardArrowRight from "@material-ui/icons/KeyboardArrowRight";
 import KeyboardArrowLeft from "@material-ui/icons/KeyboardArrowLeft";
 import React from "react";
 import { CustomNumberTextField } from "./CustomNumberTextField";
-import { TablePaginationActionsCustomType } from "../dto";
+import { RatpTablePaginationActionsCustomType } from "../types";
+import styled from "styled-components";
 
+const Root = styled(Box)`
+  display: flex;
+  min-height: 100px;
+  align-content: center;
 
-export const TablePaginationActionsCustom = ({
+`;
+export const RatpTablePaginationActionsCustom = ({
   count,
   page,
   rowsPerPage,
@@ -17,7 +23,7 @@ export const TablePaginationActionsCustom = ({
   apiRow,
   onChangeApiRow,
   onChangeApiPage,
-}: TablePaginationActionsCustomType) => {
+}: RatpTablePaginationActionsCustomType) => {
   const theme = useTheme();
 
   const handleFirstPageButtonClick = (event) => onPageChange(event, 0);
@@ -31,7 +37,9 @@ export const TablePaginationActionsCustom = ({
   const endPage = page >= Math.ceil(count / rowsPerPage) - 1;
 
   return (
-    <Box flexWrap="wrap" flexShrink={0} display={"flex"}>
+    <Root
+      flexWrap="wrap" flexShrink={0} display={"flex"}
+    >
       <IconButton
         onClick={handleFirstPageButtonClick}
         disabled={page === 0}
@@ -85,7 +93,7 @@ export const TablePaginationActionsCustom = ({
         </Grid>
       </Grid>
 
-    </Box>
+    </Root>
   );
 }
 

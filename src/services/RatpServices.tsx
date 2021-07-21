@@ -1,5 +1,5 @@
 import axios from "axios";
-import { GetAllType } from "../dto";
+import { GetAllType } from "../types";
 
 export const getAll = async ({
   query = "",
